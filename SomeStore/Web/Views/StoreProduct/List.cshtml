@@ -1,0 +1,17 @@
+﻿@using Domain.Models
+@{
+    
+    ViewBag.Title = "List";
+}
+
+<h2>List of products</h2>
+
+@foreach (var obj in @Model)
+{
+    <div>
+        <h3>@obj.Name</h3>
+        <p>Price: @obj.Price.ToString("# rub")</p>
+        <p>Desc: @obj.Description</p>
+        <p>Category: @obj.Category</p>
+    </div>
+}
