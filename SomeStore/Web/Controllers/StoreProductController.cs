@@ -28,11 +28,12 @@ namespace Web.Controllers
             return View();
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category,int page = 1)
         {
             StoreProductsListViewModel model = new StoreProductsListViewModel
             {
-                StoreProducts = repository.GetAll().OrderBy(o => o.StoreProductId)
+                StoreProducts = repository.GetAll().Where(o=>o.Category==category || category == null)
+                .OrderBy(o => o.StoreProductId)
                 .Skip((page-1)*pageSize)
                 .Take(pageSize),
                 PagingInfo = new PagingInfo
@@ -40,7 +41,9 @@ namespace Web.Controllers
                     CurrPage = page,
                     ItemsPerPage = pageSize,
                     TotalItems = repository.GetAll().Count()
-                }
+                },
+                CurrentCategory = category
+                
             };
             return View(model);
         }
