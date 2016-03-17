@@ -1,3 +1,4 @@
+G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 G:\OOP\Store\SomeStore\Domain\bin\Debug\Domain.dll.config
 G:\OOP\Store\SomeStore\Domain\bin\Debug\Domain.dll
 G:\OOP\Store\SomeStore\Domain\bin\Debug\Domain.pdb
@@ -18,9 +19,7 @@ G:\OOP\Store\SomeStore\Domain\bin\Debug\System.Web.Razor.xml
 G:\OOP\Store\SomeStore\Domain\bin\Debug\System.Web.WebPages.xml
 G:\OOP\Store\SomeStore\Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 G:\OOP\Store\SomeStore\Domain\bin\Debug\System.Web.WebPages.Razor.xml
-G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.dll
-G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.pdb
-G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.Migrations.InitialCreate.resources
 G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.csproj.GenerateResource.Cache
-G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.Migrations.UpdateDatabase.resources
+G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.dll
+G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.pdb

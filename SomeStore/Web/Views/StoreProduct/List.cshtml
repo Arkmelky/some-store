@@ -1,4 +1,6 @@
 ﻿@using Domain.Models
+@model Web.Models.StoreProductsListViewModel
+
 @{
     
     ViewBag.Title = "List";
@@ -6,7 +8,7 @@
 
 <h2>List of products</h2>
 
-@foreach (var obj in @Model)
+@foreach (var obj in @Model.StoreProducts)
 {
     <div>
         <h3>@obj.Name</h3>
@@ -15,3 +17,6 @@
         <p>Category: @obj.Category</p>
     </div>
 }
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>

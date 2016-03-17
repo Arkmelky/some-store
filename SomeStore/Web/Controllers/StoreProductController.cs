@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Domain.Abstract;
 using Domain.DbAccess;
 using Domain.Models;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -29,11 +30,19 @@ namespace Web.Controllers
 
         public ViewResult List(int page = 1)
         {
-            
-            return View(repository.GetAll()
-                .OrderBy(product => product.StoreProductId)
+            StoreProductsListViewModel model = new StoreProductsListViewModel
+            {
+                StoreProducts = repository.GetAll().OrderBy(o => o.StoreProductId)
                 .Skip((page-1)*pageSize)
-                .Take(pageSize));
+                .Take(pageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrPage = page,
+                    ItemsPerPage = pageSize,
+                    TotalItems = repository.GetAll().Count()
+                }
+            };
+            return View(model);
         }
 
     }
