@@ -29,7 +29,7 @@ namespace UnitTest
             StoreProductController controller = new StoreProductController(mock.Object);
             controller.pageSize = 3;
 
-            IEnumerable<StoreProduct> result = (IEnumerable<StoreProduct>) controller.List(2).Model;
+            IEnumerable<StoreProduct> result = (IEnumerable<StoreProduct>) controller.List(null,2).Model;
 
             List<StoreProduct> products = result.ToList();
             Assert.IsTrue(products.Count == 2);

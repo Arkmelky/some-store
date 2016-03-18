@@ -40,7 +40,10 @@ namespace Web.Controllers
                 {
                     CurrPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = repository.GetAll().Count()
+                    TotalItems = category == null ?
+
+                    repository.GetAll().Count() :
+                    repository.GetAll().Where(x => x.Category == category).Count()
                 },
                 CurrentCategory = category
                 
