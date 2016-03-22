@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\StoreProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -136,6 +137,7 @@
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDepRes.cs" />
+    <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\StoreProductsListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +173,7 @@
     <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\Shared\StoreProductSummary.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

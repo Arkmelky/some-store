@@ -1,0 +1,41 @@
+﻿@model Web.Models.CartIndexViewModel
+@{
+    ViewBag.Title = "SomeStore Cart";
+}
+
+<h2>Your Cart</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Count</th>
+            <th>Product</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Total price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Items)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.StoreProduct.Name</td>
+                <td class="text-right">@line.StoreProduct.Price.ToString("# руб")</td>
+                <td class="text-right">
+                    @((line.Quantity * line.StoreProduct.Price).ToString("# руб"))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Итого:</td>
+            <td class="text-right">
+                @Model.Cart.CalcTotalPrice().ToString("# руб")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl" >Продолжить покупки</a>
+</div>
