@@ -22,51 +22,44 @@ namespace Web.Controllers
         //
         // GET: /Cart/
 
-        public ViewResult Index(string returnUrl)
+        public ViewResult Index(Cart cart,string returnUrl)
         {
             return View(new CartIndexViewModel
             {
-                Cart = GetCart(),
+                Cart = cart,
                 ReturnUrl = returnUrl
             });
         }
 
-        public RedirectToRouteResult AddToCart(int StoreProductId, string returnUrl)
+        public RedirectToRouteResult AddToCart(Cart cart,int StoreProductId, string returnUrl)
         {
             StoreProduct product = repository.Get(StoreProductId);
 
             if (product != null)
             {
-                GetCart().AddItem(product,1);
+                cart.AddItem(product,1);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFromCart(int StoreProductId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart,int StoreProductId, string returnUrl)
         {
             StoreProduct product = repository.Get(StoreProductId);
 
             if (product != null)
             {
-                GetCart().RemoveItem(product);
+                cart.RemoveItem(product);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public Cart GetCart()
-        {
-            Cart cart = (Cart) Session["Cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
 
-            return cart;
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
         }
 
 
-        
 
     }
 }
