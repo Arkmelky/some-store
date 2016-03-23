@@ -86,6 +86,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Abstract\IOrderProcessor.cs" />
+    <Compile Include="Models\Concrete\EmailOrderProcessor.cs" />
+    <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Models\StoreProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

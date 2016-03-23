@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Domain.Abstract;
 using Domain.DbAccess;
 using Domain.Models;
+using Domain.Models.Abstract;
 using Web.Models;
 
 namespace Web.Controllers
@@ -13,9 +14,11 @@ namespace Web.Controllers
     public class CartController : Controller
     {
         private IGenericRepository<StoreProduct> repository;
+        private IOrderProcessor orderProcessor;
 
-        public CartController(IGenericRepository<StoreProduct> ninjectInjectionRepository)
+        public CartController(IGenericRepository<StoreProduct> ninjectInjectionRepository, IOrderProcessor processor)
         {
+            orderProcessor = processor;
             repository = ninjectInjectionRepository;
         }
 
@@ -59,7 +62,30 @@ namespace Web.Controllers
             return PartialView(cart);
         }
 
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
 
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Items.Count() == 0)
+            {
+                ModelState.AddModelError("","Your cart is empty!");
+            }
 
+            if (ModelState.IsValid)
+            {
+                orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                return View();
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
+            
+        }
     }
 }

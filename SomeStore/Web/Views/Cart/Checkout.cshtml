@@ -1,0 +1,33 @@
+﻿@model Domain.Models.ShippingDetails
+@{
+    ViewBag.Title = "Make order";
+}
+
+<h2>Make order now !</h2>
+<p>Fill the order:</p>
+
+@using (Html.BeginForm())
+{
+   @Html.ValidationSummary() 
+   foreach (var property in ViewData.ModelMetadata.Properties) {
+       if (property.PropertyName != "GiftWrap")
+       {
+           <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+       }
+        
+    } 
+    
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            Use a gift box ?
+        </label>
+    </div>
+    
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Done!" />
+    </div>
+}
