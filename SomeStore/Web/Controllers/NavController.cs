@@ -29,8 +29,8 @@ namespace Web.Controllers
                 .Select(o => o.Category)
                 .Distinct()
                 .OrderBy(o => o);
-
-            return PartialView(categories);
+            //string menuVersion = mobileMenu ? "MobileMenu" : "Menu";
+            return PartialView("FlexMenu",categories);
         }
 
     }
