@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201603142252479_InitialCreate.Designer.cs">
       <DependentUpon>201603142252479_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603272230298_SomeStore_1.cs" />
+    <Compile Include="Migrations\201603272230298_SomeStore_1.Designer.cs">
+      <DependentUpon>201603272230298_SomeStore_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Abstract\IOrderProcessor.cs" />
@@ -99,6 +103,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603142252479_InitialCreate.resx">
       <DependentUpon>201603142252479_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603272230298_SomeStore_1.resx">
+      <DependentUpon>201603272230298_SomeStore_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
