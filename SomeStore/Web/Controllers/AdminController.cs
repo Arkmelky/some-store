@@ -37,6 +37,7 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 repository.Add(storeProduct);
+                repository.Save();
                 TempData["message"] = string.Format("Product '{0}' has been updated!", storeProduct.Name);
                 return RedirectToAction("Index");
             }
@@ -46,5 +47,32 @@ namespace Web.Controllers
             }
         }
 
+        public ActionResult Create()
+        {
+            return View("Edit", new StoreProduct());
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int storeProductId)
+        {
+            if (storeProductId > 0)
+            {
+                var product = repository.Get(storeProductId);
+                if (product != null)
+                {
+                    TempData["message"] = string.Format("Product '{0}' has been removed!",product.Name);
+
+                    repository.Remove(product);
+                    repository.Save();
+
+                    return RedirectToAction("Index");
+                }
+            }
+            
+            TempData["error"] = string.Format("Product does not exist.");
+            
+
+            return RedirectToAction("Index");
+        }
     }
 }
