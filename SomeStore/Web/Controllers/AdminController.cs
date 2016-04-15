@@ -8,6 +8,7 @@ using Domain.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IGenericRepository<StoreProduct> repository;
@@ -32,10 +33,17 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(StoreProduct storeProduct)
+        public ActionResult Edit(StoreProduct storeProduct, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    storeProduct.ImageMimeType = image.ContentType;
+                    storeProduct.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(storeProduct.ImageData, 0, image.ContentLength);
+                }
+
                 repository.Add(storeProduct);
                 repository.Save();
                 TempData["message"] = string.Format("Product '{0}' has been updated!", storeProduct.Name);

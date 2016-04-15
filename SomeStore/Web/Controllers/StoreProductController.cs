@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain.Abstract;
 using Domain.DbAccess;
 using Domain.Models;
+using Newtonsoft.Json.Schema;
 using Web.Models;
 
 namespace Web.Controllers
@@ -48,8 +50,25 @@ namespace Web.Controllers
                 CurrentCategory = category
                 
             };
+            
+            
             return View(model);
         }
 
+        public FileContentResult GetImage(int storeProductId)
+        {
+            StoreProduct product = repository.Get(storeProductId);
+            if (product != null)
+            {
+                return File(product.ImageData, product.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
+
+    
 }

@@ -24,3 +24,4 @@ G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.csproj.GenerateResource.Cache
 G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.dll
 G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.pdb
 G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.Migrations.SomeStore_1.resources
+G:\OOP\Store\SomeStore\Domain\obj\Debug\Domain.Migrations.SomeStore_2.resources

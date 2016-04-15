@@ -12,6 +12,8 @@ using Domain.Models.Abstract;
 using Domain.Models.Concrete;
 using Moq;
 using Ninject;
+using Web.Infrastructure.Abstract;
+using Web.Infrastructure.Concrete;
 
 namespace Web.Infrastructure
 {
@@ -58,6 +60,7 @@ namespace Web.Infrastructure
 
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
                 .WithConstructorArgument("settings", emailSettings);
+            kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
 
         }
     }

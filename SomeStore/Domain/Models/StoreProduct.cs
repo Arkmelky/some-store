@@ -32,5 +32,8 @@ namespace Domain.Models
         [Required(ErrorMessage = "Enter product price, please.")]
         [Range(0.01,Double.MaxValue,ErrorMessage="Price must be positive number.")]
         public decimal Price { get; set; }
+        
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
     }
 }
